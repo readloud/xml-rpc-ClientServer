@@ -1,0 +1,40 @@
+<html>
+	<head>
+		<title>XML-RPC test suite</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<script src="http://fargo.io/code/jquery-1.9.1.min.js"></script>
+		<link href="http://fargo.io/code/bootstrap.css" rel="stylesheet">
+		<script src="http://fargo.io/code/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="http://fargo.io/code/fontAwesome/css/font-awesome.min.css"/>
+		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+		<script src="http://fargo.io/code/node/shared/utils.js"></script>
+		<script src="http://fargo.io/code/shared/xml.js"></script>
+		
+		<script src="xmlrpc.js"></script>
+		<script src="code.js"></script>
+		<link href="styles.css" rel="stylesheet" type="text/css">
+		
+		</head>
+	<body>
+		<div class="divPageBody">
+			<h1>XML-RPC Validator Web App</h1>
+			<p>This application calls a <a href="https://web.archive.org/web/20010201200100/http://www.xmlrpc.com/validator1Docs">suite of scripts</a> running on your server, and tells you whether your server is working in accordance with the <a href="/spec.md">XML-RPC specification</a>.</p>
+			<p>Enter the URL of your test server, press the button and we'll make six calls to your server. Open the JavaScript console If you want to see the XML that's going out over the wire.</p>
+			<button class="btn btn-large btnRun" type="button" id="idTestButton" onclick="testsButtonClick ();">
+				Run Test
+				</button>
+			<input type="text" class="xlarge itemEndpointEnter" size="70" maxlength="300" id="idEndpointUrl" placeholder="Enter the URL of your XML-RPC server here.">
+			<div class="divTests" id="idTests">
+				</div>
+			<p" id="idResult">
+				</p>
+			</div>
+		<script>
+			$(document).ready (function () {
+				startup ();
+				});
+			</script>
+		</body>
+	</html>

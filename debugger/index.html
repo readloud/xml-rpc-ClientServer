@@ -1,0 +1,153 @@
+<html>
+	<head>
+		<title>XML-RPC debugger</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="//s3.amazonaws.com/scripting.com/code/includes/jquery-1.9.1.min.js"></script>
+<link href="//s3.amazonaws.com/scripting.com/code/includes/bootstrap.css" rel="stylesheet">
+<script src="//s3.amazonaws.com/scripting.com/code/includes/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="//s3.amazonaws.com/scripting.com/code/fontawesome/css/all.css">
+<link href="//fonts.googleapis.com/css?family=Ubuntu:400,500i,700" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Rancho" rel="stylesheet">
+
+<script src="//s3.amazonaws.com/scripting.com/code/includes/basic/code.js"></script>
+<link href="//s3.amazonaws.com/scripting.com/code/includes/basic/styles.css" rel="stylesheet" type="text/css">
+
+		
+		<script src="http://scripting.com/code/xmlrpcbrowserclient/xmlrpc.js"></script>
+		<script src="code.js"></script>
+		<link href="styles.css" rel="stylesheet" type="text/css">
+		
+		</head>
+	<body>
+		<div class="divMenubar" id="idMenubar">
+			<div class="topbar-wrapper" style="z-index: 5;">
+				<div class="navbar navbar-fixed-top" data-dropdown="dropdown">
+					<div class="divVersionNumber">
+						<span id="idPublishStatus"></span><span id="idSavedStatus"></span>&nbsp;<span id="idVersionNumber"></span>
+						</div>
+					<div class="navbar-inner">
+						<div class="container">
+							<a class="brand" href=""><span id="idMenuProductName"></span></a>
+							<ul class="nav" id="idMainMenuList">
+								<li class="dropdown" id="idTestsMenu"> 
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tests&nbsp;<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a onclick="aboutTestsMenu ();">About this menu...</a></li>
+										<li class="divider"></li>
+										<li><a onclick="setupExample (examples.getStateName);">examples.getStateName</a></li>
+										<li><a onclick="setupExample (examples.getStateList);">examples.getStateList</a></li>
+										<li><a onclick="setupExample (examples.getStateNames);">examples.getStateNames</a></li>
+										<li><a onclick="setupExample (examples.getStateStruct);">examples.getStateStruct</a></li>
+										<li class="divider"></li>
+										<li><a onclick="window.open (getShareableUrl ());">Shareable URL...</a></li>
+										</ul>
+									</li>
+								<li class="dropdown" id="idDocsMenu"> 
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Docs&nbsp;<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a href="https://github.com/scripting/xml-rpc#simple-xml-rpc-debugger" target="_blank">Main docs</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<div class="divPageBody">
+			<table>
+				<tr>
+					<td class="tdLabel">
+						</td>
+					<td class="tdContent">
+						<div class="divFormatPopup">
+							<select id="idFormatMenu" onchange="formatMenuSelect ();">
+								<option value="xml">XML</option>
+								<option value="json">JSON</option>
+								</select>
+							</div>
+						<div class="divDocsLink">
+							<a href="https://github.com/scripting/xml-rpc#simple-xml-rpc-debugger" target="_blank">Docs</a>
+							</div>
+						<h1 class="h1TitleInPage">Simple <span id="idFormatInTitle">XML</span>-RPC debugger</h1>
+						</td>
+					</tr>
+				<tr>
+					<td class="tdLabel">
+						Endpoint:
+						</td>
+					<td class="tdContent">
+						<input class="inputForRpc" id="idEndpoint" size="50" type="text" value="" placeholder="The address of the XML-RPC endpoint.">
+						</td>
+					</tr>
+				<tr>
+					<td class="tdLabel">
+						Verb:
+						</td>
+					<td class="tdContent">
+						<input id="idVerb" size="50" type="text" value="" placeholder="The name of the procedure to call remotely.">
+						</td>
+					</tr>
+				<tr>
+					<td class="tdLabel">
+						Params:
+						</td>
+					<td class="tdContent">
+						<input id="idParams" size="50" type="text" value="" placeholder="The parameters to the XML-RPC call, as a JavaScript expression.">
+						</td>
+					</tr>
+				<tr>
+					<td class="tdLabel">
+						</td>
+					<td class="tdContent">
+						<button id="idCallButton" class="btn btn-large btnCall" type="button" onclick="callButtonClick ();">Call</button>
+						</td>
+					</tr>
+				<tr>
+					<td class="tdLabel tdResponseLabel">
+						Response:
+						</td>
+					<td class="tdContent">
+						<pre class="divResponse" id="idResponse">
+							</pre>
+						</td>
+					</tr>
+				<tr>
+					<td class="tdLabel">
+						</td>
+					<td class="tdContent">
+						<div class="divError" id="idError">
+							</div>
+						</td>
+					</tr>
+				
+				
+				<tr>
+					<td class="tdLabel tdResponseLabel" id="idCallLabel">
+						XML call:
+						</td>
+					<td class="tdContent">
+						<pre class="divResponse" id="idXmlCall">
+							</pre>
+						</td>
+					</tr>
+				<tr>
+					<td class="tdLabel tdResponseLabel" id="idResponseLabel">
+						XML response:
+						</td>
+					<td class="tdContent">
+						<pre class="divResponse" id="idXmlResponse">
+							</pre>
+						</td>
+					</tr>
+				</table>
+			</div>
+		<script>
+			$(document).ready (function () {
+				startup ();
+				});
+			</script>
+		</body>
+	</html>
